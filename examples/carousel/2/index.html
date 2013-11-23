@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>轮换广告</title>
+    <script type="text/javascript" src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle2.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		.external {
+			position: static
+		}
+
+		.external > * {
+			margin: 0 5px
+		}
+
+		.cycle-pager {
+			display: block;
+		}
+
+		.example-pager {
+			text-align: center;
+			width: 100%;
+			z-index: 500;
+			top: 10px;
+			overflow: hidden;
+		}
+
+		.example-pager span {
+			font-size: 50px;
+			width: 16px;
+			height: 16px;
+			display: inline-block;
+			color: #ddd;
+		}
+
+		.example-pager span.cycle-pager-active {
+			color: #D69746;
+		}
+
+		.example-pager > * {
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+<body>
+
+<!--轮换广告--标准型 start-->
+<!-- data-cycle-fx表示幻灯片过度的演示方式,的参数有:fade, fadeout, none, scrollHorz -->
+<!-- data-cycle-timeout表示幻灯片转换之间的时间,以毫秒为单位,0表示不自动切换。 -->
+<!-- data-cycle-reverse表示幻灯片轮换的方向从反方向,默认是fasle,定义为true就会反方向轮换 -->
+<div
+	class = "cycle-slideshow"
+	data-cycle-fx =  fade
+	data-cycle-timeout = 0
+>
+
+	<div class = "cycle-pager"></div>
+	<a href="http://app.baidu.com/">
+		<img src = "images/p1.jpg">
+	</a>
+	<a href="http://app.baidu.com/">
+		<img src = "images/p2.jpg">
+	</a>
+	<a href="http://app.baidu.com/">
+		<img src = "images/p3.jpg">
+	</a>
+	<!--<img src = "images/p1.jpg">-->
+	<!--<img src = "images/p2.jpg">-->
+	<!--<img src = "images/p3.jpg">-->
+	<!--<img src = "images/p4.jpg">-->
+</div>
+<!--轮换广告--标准型 end-->
+
+
+<hr>
+
+
+<!--轮换广告--鼠标触发事件型 start-->
+<!-- data-cycle-pager-event表示幻灯片切换事件,默认不写就是点击切换,如果是mouseover则是鼠标放在上面就切换。 -->
+<div
+	class = "cycle-slideshow"
+	data-cycle-fx = scrollHorz
+	data-cycle-timeout = 5000
+	data-cycle-pager-event = "mouseover"
+>
+
+	<div class = "cycle-pager"></div>
+	<img src = "images/p1.jpg">
+	<img src = "images/p2.jpg">
+	<img src = "images/p3.jpg">
+	<img src = "images/p4.jpg">
+</div>
+<!--轮换广告--鼠标触发事件型 end-->
+
+<hr>
+
+<!--轮换广告--图片左右两边有切换按钮 start-->
+<!--例子里我们用的是默认的,如果我们不用默认的,也可以自定义页面上某个按钮或是某个链接触发切换幻灯片的效果,使用添加如下两个属性-->
+<!-- data-cycle-prev="#prev"这个是点击上一张 -->
+<!-- data-cycle-next="#next"这个是点击下一张 -->
+<!-- 也可以用class名称来定位，比如：data-cycle-prev=".prev"这样页面就可以多个地方同时支持触发切换,只要class有这个 -->
+<div
+	class = "cycle-slideshow"
+	data-cycle-fx = scrollHorz
+	data-cycle-timeout = 5000
+>
+
+	<div class = "cycle-pager"></div>
+	<div class="cycle-prev"></div>
+	<div class="cycle-next"></div>
+	<img src = "images/p1.jpg">
+	<img src = "images/p2.jpg">
+	<img src = "images/p3.jpg">
+	<img src = "images/p4.jpg">
+</div>
+<!--轮换广告--图片左右两边有切换按钮 end-->
+
+
+</body>
+</html>
