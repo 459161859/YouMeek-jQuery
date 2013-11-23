@@ -47,6 +47,7 @@
 </head>
 <body>
 
+
 <!--轮换广告--标准型 start-->
 <!-- data-cycle-fx表示幻灯片过度的演示方式,的参数有:fade, fadeout, none, scrollHorz -->
 <!-- data-cycle-timeout表示幻灯片转换之间的时间,以毫秒为单位,0表示不自动切换。 -->
@@ -58,21 +59,32 @@
 >
 
 	<div class = "cycle-pager"></div>
-	<a href="http://app.baidu.com/">
-		<img src = "images/p1.jpg">
-	</a>
-	<a href="http://app.baidu.com/">
-		<img src = "images/p2.jpg">
-	</a>
-	<a href="http://app.baidu.com/">
-		<img src = "images/p3.jpg">
-	</a>
-	<!--<img src = "images/p1.jpg">-->
-	<!--<img src = "images/p2.jpg">-->
-	<!--<img src = "images/p3.jpg">-->
-	<!--<img src = "images/p4.jpg">-->
+	<img src = "images/p1.jpg">
+	<img src = "images/p2.jpg">
+	<img src = "images/p3.jpg">
+	<img src = "images/p4.jpg">
 </div>
 <!--轮换广告--标准型 end-->
+
+<hr>
+
+<!--轮换广告--标准型,可以用锚点点击 start-->
+<!-- data-cycle-slides指定了cycle-slideshow下面的元素,我要找哪个元素轮换。默认是">img" -->
+<div
+	class = "cycle-slideshow"
+	data-cycle-fx =  fade
+	data-cycle-timeout = 2000
+	data-cycle-slides=">a"
+>
+
+	<div class = "cycle-pager"></div>
+
+	<a href="http://www.YouMeek.com" target="_blank"><img src="images/p1.jpg"></a>
+	<a href="http://www.YouMeek.com" target="_blank"><img src="images/p2.jpg"></a>
+	<a href="http://www.YouMeek.com" target="_blank"><img src="images/p3.jpg"></a>
+	<a href="http://www.YouMeek.com" target="_blank"><img src="images/p4.jpg"></a>
+</div>
+<!--轮换广告--标准型,可以用锚点点击 end-->
 
 
 <hr>
