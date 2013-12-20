@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>时间控件</title>
+	<script type="text/javascript" src="../../common/static/js/jquery-1.6.4.min.js"></script>
+
+	<!--这个JS必须调用，且My97DatePicker必须导入在项目，里面文件不要动-->
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+		});
+	</script>
+
+</head>
+<body>
+
+<!--直接显示日历(id=directShowDateDiv) start-->
+<div id="directShowDateDiv" style="margin: 0 auto;text-align: center;font-size: 18px;padding-top: 1%;"></div>
+<input type="hidden" name="directShowDate" id="directShowDate"/>
+<script>
+	WdatePicker({eCont:'directShowDateDiv',onpicked:function(dp){
+		//onpicked是控件的事件属性,如果要定义事件可以在这里写
+		alert('你选择的日期是:'+dp.cal.getDateStr())
+		//实际开发中可以在这里给某个隐藏值赋值
+		$('#directShowDate').val(dp.cal.getDateStr());
+	}});
+</script>
+<!--直接显示日历 end-->
+<hr>
+<!--给任意一个容器增加时间选择功能(id=demoSpan) start-->
+<div style="margin: 0 auto;text-align: center;font-size: 18px;padding-top: 1%;">
+	<span id="demoSpan">2013-12-01</span>
+	<img onClick="WdatePicker({el:'demoSpan'})" src="js/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle" style="cursor:pointer" />
+</div>
+<!--给任意一个容器增加时间选择功能 end-->
+<hr>
+<!--有input的日期选择 start-->
+<div style="margin: 0 auto;text-align: center;font-size: 18px;padding-top: 1%;">
+
+	<!--加上class="Wdate"就会在选择框右边出现日期图标-->
+	<span style="color: red">（常用）</span>常规日期：
+	<input onClick="WdatePicker()" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	<span style="color: red">（常用）</span>对周日周六高亮显示：
+	<input onClick="WdatePicker({specialDays:[0,6]})" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	<span style="color: red">（常用）</span>包含时分秒：
+	<input onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	<!--自定义格式参数更多含义和变化看:http://www.my97.net/dp/demo/resource/2.2.asp-->
+	<!--单个H代表0~23小时-->
+	<span style="color: red">（常用）</span>时+分：
+	<input onClick="WdatePicker({dateFmt:'H:mm'})" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	自定义格式2：
+	<input onClick="WdatePicker({dateFmt:'现在是:yyyy年MM月dd日'})" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	限制最大+最小日期：
+	<input onClick="WdatePicker({minDate:'2013-12-05',maxDate:'2013-12-25'})" class="Wdate" type="text" name="dateInput" style="width: 300px;" /><br>
+
+	限制最大+最小时间：
+	<input onClick="WdatePicker({dateFmt:'H:mm',minDate:'8:25',maxDate:'23:18'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+	<hr>
+
+	<!--其他限制：可以详细看 http://www.my97.net/dp/demo/resource/2.4.asp-->
+	<span style="color: red">（常用）</span>只能选今天以前（包含今天）：
+	<input onClick="WdatePicker({maxDate:'%y-%M-%d'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+	只能选今天以前（不包含今天）：
+	<input onClick="WdatePicker({maxDate:'%y-%M-{%d-1}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+	<span style="color: red">（常用）</span>只能选今天以后（包含今天）：
+	<input onClick="WdatePicker({minDate:'%y-%M-%d'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+	只能选今天以后（不包含今天）：
+	<input onClick="WdatePicker({minDate:'%y-%M-{%d+1}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+	只能选日期1号至本月最后一天：
+	<input onClick="WdatePicker({minDate:'%y-%M-01',maxDate:'%y-%M-%ld'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br><br>
+
+	<hr>
+
+	(常用)前面的日期不能大于后面的日期(下单时间)：<br>
+	<!--这里事件用的是onFocus了，需要注意-->
+	从 <input id="frontDateInput" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'backDateInput\')}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" />
+	到 <input id="backDateInput" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'frontDateInput\')}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /> <br>
+
+	前面的日期不能大于后面的日期且两个日期都不能大于 2015-10-01：<br>
+	<!--这里事件用的是onFocus了，需要注意-->
+	从 <input id="frontDateInput2" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'backDateInput2\')||\'2015-10-01\'}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" />
+	到 <input id="backDateInput2" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'frontDateInput2\')}',maxDate:'2015-10-01'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /> <br><br>
+
+	<hr>
+
+	静止选择周日周六：
+	<!--更多禁止规则可以看官网:http://www.my97.net/dp/demo/resource/2.4.asp-->
+	<input onClick="WdatePicker({disabledDays:[0,6]})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /><br>
+
+
+	<span style="color: red">（常用）</span>联动效果：
+	<!--更多禁止规则可以看官网:http://www.my97.net/dp/demo/resource/2.5.asp-->
+	从 <input id="frontDateInput3" onFocus="var backDateInput4=$dp.$('backDateInput4');WdatePicker({onpicked:function(){backDateInput4.focus();},maxDate:'#F{$dp.$D(\'backDateInput4\')}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" />
+	到 <input id="backDateInput4" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'frontDateInput3\')}'})" class="Wdate" type="text" name=" dateInput" style="width: 300px;" /> <br><br>
+
+
+
+</div>
+<!--有input的日期选择 end-->
+
+</body>
+</html>
